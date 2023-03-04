@@ -3,8 +3,10 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>{{ title }}</title>
+		<link rel="stylesheet" type="text/css" href="/__static/style.css" />
 	</head>
 	<body>
-		{{body}}
+		What about this?
+		{% block sidebar %}{% endblock sidebar %}
 	</body>
 </html>
