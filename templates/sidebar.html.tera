@@ -1,6 +1,0 @@
-{% extends "layout" %}
-
-{% block sidebar %}
-	<div>Sidebar</div>
-	{% block content %}{% endblock content %}
-{% endblock sidebar %}
