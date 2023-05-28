@@ -1,31 +1,18 @@
 <script>
 	import MenuIcon from './MenuIcon.svelte';
 
-	let directories = [
-		{
-			name: 'Home',
-			href: '/'
-		},
-		{
-			name: 'Log',
-			href: '/log'
-		}
-	];
+	function toggleMenu() {
+		const menu = document.querySelector('section');
+		menu.classList.toggle('hidden');
+	}
 
-	let files = [
-		{
-			name: 'README',
-			href: '/README'
-		},
-		{
-			name: 'LICENSE',
-			href: '/LICENSE'
-		}
-	];
+	export let directories, files;
 </script>
 
-<section>
-	<button><MenuIcon /></button>
+<div class="menu-icon">
+	<button on:click={toggleMenu}><MenuIcon /></button>
+</div>
+<section class="hidden">
 	<nav>
 		<ul id="directories">
 			{#each directories as directory}
@@ -42,6 +29,17 @@
 </section>
 
 <style>
+	.menu-icon {
+		z-index: 2;
+		position: fixed;
+		top: 3rem;
+		left: 3rem;
+	}
+
+	.hidden {
+		display: none;
+	}
+
 	section {
 		z-index: 1;
 		position: fixed;
@@ -55,7 +53,8 @@
 		min-width: 12rem;
 		border-radius: 0.5rem;
 		padding: 1rem;
-		background-color: var(--light);
+		padding-top: 3rem;
+		background-color: var(--background);
 		filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.1)) drop-shadow(0 1px 1px rgb(0 0 0 / 0.06));
 	}
 
@@ -64,7 +63,7 @@
 	}
 
 	button:hover {
-		background-color: var(--dim);
+		background-color: var(--midtone);
 	}
 
 	nav {

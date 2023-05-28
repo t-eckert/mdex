@@ -1,9 +1,13 @@
-<script>
+<script lang="ts">
+	import type { PageData } from '/$types';
+
 	import Markdown from '../markdown/Markdown.svelte';
 	import Navigation from '../navigation/Navigation.svelte';
+
+	export let data: PageData;
 </script>
 
-<Navigation />
+<Navigation directories={data.directories} files={data.files} />
 <article>
 	<Markdown />
 </article>
