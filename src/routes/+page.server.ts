@@ -1,43 +1,13 @@
-import type { PageServerLoad } from './$types';
-
-export interface Directory {
-	name: string;
-	href: string;
-}
-
-const directories: Directory[] = [
-	{
-		name: 'Home',
-		href: '/'
-	},
-	{
-		name: 'Log',
-		href: '/log'
-	}
-];
-
-export interface File {
-	name: string;
-	href: string;
-}
-
-const files: File[] = [
-	{
-		name: 'README',
-		href: '/README'
-	},
-	{
-		name: 'LICENSE',
-		href: '/LICENSE'
-	}
-];
-
-const markdown = ``;
+import type { PageServerLoad } from "./$types"
+import { loadDirectories } from "../../lib/directories"
+import { loadFiles } from "../../lib/files"
+import { loadMarkdown } from "../../lib/markdown"
 
 export const load = (() => {
+	const path = ""
 	return {
-		directories,
-		files,
-		markdown
-	};
-}) satisfies PageServerLoad;
+		directories: loadDirectories(path),
+		files: loadFiles(path),
+		markdown: loadMarkdown(path),
+	}
+}) satisfies PageServerLoad

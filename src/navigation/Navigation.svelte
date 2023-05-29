@@ -1,12 +1,15 @@
-<script>
-	import MenuIcon from './MenuIcon.svelte';
+<script lang="ts">
+	import MenuIcon from "./MenuIcon.svelte"
+	import type { Directory, File } from "../../lib/interfaces"
 
 	function toggleMenu() {
-		const menu = document.querySelector('section');
-		menu.classList.toggle('hidden');
+		const menu = document.querySelector("section")
+		if (!menu) return
+		menu.classList.toggle("hidden")
 	}
 
-	export let directories, files;
+	export let directories: Directory[]
+	export let files: File[]
 </script>
 
 <div class="menu-icon">
@@ -82,7 +85,7 @@
 	}
 
 	ul#directories > li::after {
-		content: '/';
+		content: "/";
 		margin-left: 0.1rem;
 	}
 </style>
