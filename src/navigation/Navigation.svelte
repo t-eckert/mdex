@@ -1,35 +1,34 @@
 <script lang="ts">
+	import { fade } from "svelte/transition"
 	import MenuIcon from "./MenuIcon.svelte"
 	import type { Directory, File } from "../../lib/interfaces"
 
-	function toggleMenu() {
-		const menu = document.querySelector("section")
-		if (!menu) return
-		menu.classList.toggle("hidden")
-	}
+	let isNavVisible = false
 
 	export let directories: Directory[]
 	export let files: File[]
 </script>
 
 <div class="menu-icon">
-	<button on:click={toggleMenu}><MenuIcon /></button>
+	<button on:click={() => (isNavVisible = !isNavVisible)}><MenuIcon /></button>
 </div>
-<section class="hidden">
-	<nav>
-		<ul id="directories">
-			{#each directories as directory}
-				<li><a href={directory.href}>{directory.name}</a></li>
-			{/each}
-		</ul>
+{#if isNavVisible}
+	<section transition:fade={{ duration: 100 }}>
+		<nav>
+			<ul id="directories">
+				{#each directories as directory}
+					<li><a href={directory.href}>{directory.name}</a></li>
+				{/each}
+			</ul>
 
-		<ul id="files">
-			{#each files as file}
-				<li><a href={file.href}>{file.name}</a></li>
-			{/each}
-		</ul>
-	</nav>
-</section>
+			<ul id="files">
+				{#each files as file}
+					<li><a href={file.href}>{file.name}</a></li>
+				{/each}
+			</ul>
+		</nav>
+	</section>
+{/if}
 
 <style>
 	.menu-icon {
@@ -37,10 +36,6 @@
 		position: fixed;
 		top: 3rem;
 		left: 3rem;
-	}
-
-	.hidden {
-		display: none;
 	}
 
 	section {

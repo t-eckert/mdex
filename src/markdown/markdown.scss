@@ -1,0 +1,52 @@
+.markdown {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5 {
+		font-weight: 600;
+	}
+
+	h1 {
+		font-size: 2.5rem;
+	}
+
+	h2 {
+		font-size: 2rem;
+	}
+
+	h3 {
+		font-size: 1.75rem;
+	}
+
+	h4 {
+		font-size: 1.5rem;
+	}
+
+	h5 {
+		font-size: 1.25rem;
+	}
+
+	p {
+		margin-bottom: 1rem;
+		line-height: 1.5;
+	}
+
+	li {
+		list-style-position: inside;
+		margin-left: 1rem;
+	}
+
+	ul > li {
+		list-style: disc;
+	}
+
+	ol > li {
+		list-style: decimal;
+	}
+
+	ul,
+	ol {
+		margin-bottom: 1rem;
+	}
+}

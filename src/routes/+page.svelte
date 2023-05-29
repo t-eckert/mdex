@@ -5,15 +5,16 @@
 	import Navigation from "../navigation/Navigation.svelte"
 
 	export let data: PageData
+	let { directories, files, markdown } = data
 </script>
 
-<Navigation directories={data.directories} files={data.files} />
-<article>
-	<Markdown />
-</article>
+<Navigation {directories} {files} />
+<section class="centered">
+	<Markdown {markdown} />
+</section>
 
 <style>
-	article {
+	.centered {
 		max-width: 40rem;
 		margin: 2rem auto;
 		padding: 0 1rem;
